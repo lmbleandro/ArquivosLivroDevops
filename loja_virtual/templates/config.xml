@@ -82,7 +82,7 @@
     </hudson.tasks.Shell>
   </postbuilders>
   <runPostStepsIfResult>
-    <name>SUCESS</name>
+    <name>SUCCESS</name>
     <ordinal>0</ordinal>
     <color>BLUE</color>
     <completeBuild>true</completeBuild>
