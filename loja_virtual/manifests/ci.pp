@@ -1,11 +1,11 @@
 class loja_virtual::ci inherits loja_virtual { 
   
   
-  package { ['git', 'maven2', 'openjdk-6-jdk', 'ruby1.9.3']:
+  package { ['git', 'maven2', 'openjdk-6-jdk']:
 		ensure => "installed",
   }
   
-#  package { 'rubygems':
+ # package { 'rubygems':
 #		ensure => "installed",
 #		require    => Package['ruby1.9.3'],
 # }
@@ -14,11 +14,11 @@ class loja_virtual::ci inherits loja_virtual {
 #		ensure => "purged",
 #  }
 
-# package { 'fpm':
-#		ensure => "installed",
-#		provider   => 'gem',
+ package { 'fpm':
+		ensure => "installed",
+		provider   => 'gem',
 #		require    => Package['ruby1.9.3'],
-# } 
+ } 
 
   class { 'jenkins':
 	config_hash => {
@@ -79,17 +79,15 @@ file { "${job_structure[1]}/config.xml":
 
 
 # file { "/etc/alternatives/ruby":
-#  ensure => '/usr/bin/ruby1.9.3',
-#owner		=> root,
-#  group		=> root,
-#  mode 		=> 777,
-#  source 	=> "puppet:///modules/loja_virtual/files/ruby",
-#  require 	=> Package["ruby1.9.3"],
-# file { '/tmp/link-to-motd':
-#    ensure => '/etc/motd',
-# } 
-#}
-  class { 'loja_virtual::repo':
+#   ensure => '/usr/bin/ruby1.9.3',
+#   owner	=> root,
+#   group	=> root,
+#   mode 	=> 777,
+#   source 	=> "puppet:///modules/loja_virtual/files/ruby",
+#   require 	=> Package["ruby1.9.3"],
+# }
+  
+ class { 'loja_virtual::repo':
     basedir => $repo_dir,
     name   => $repo_name,
   }
