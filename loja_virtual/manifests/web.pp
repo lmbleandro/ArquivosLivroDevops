@@ -23,7 +23,7 @@ class { "tomcat::server":
 	location	=> 'http://192.168.33.16/',
 	release		=> 'devopspkgs',
 	repos		=> 'main',
-	key		=> '63462B1B',
+	key		=> 'D50582E6',
 	key_source	=> 'http://192.168.33.16/devopspkgs.gpg',
 	include_src	=> false,
   }

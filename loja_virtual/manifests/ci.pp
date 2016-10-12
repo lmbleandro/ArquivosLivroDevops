@@ -62,15 +62,6 @@ file { "${job_structure[1]}/config.xml":
   notify 	=> Service["jenkins"],
  }
 
-
-# file { "/etc/alternatives/ruby":
-#   ensure => '/usr/bin/ruby1.9.3',
-#   owner	=> root,
-#   group	=> root,
-#   mode 	=> 777,
-#   source 	=> "puppet:///modules/loja_virtual/files/ruby",
-#   require 	=> Package["ruby1.9.3"],
-# }
   
  class { 'loja_virtual::repo':
     basedir => $repo_dir,
