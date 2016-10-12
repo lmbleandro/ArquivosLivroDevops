@@ -1,8 +1,30 @@
 class loja_virtual::ci inherits loja_virtual { 
   
+<<<<<<< HEAD
   package { ['git', 'maven2', 'openjdk-6-jdk']:
 		ensure => "installed",
   }
+=======
+  
+  package { ['git', 'maven2', 'openjdk-6-jdk', 'ruby1.9.3']:
+		ensure => "installed",
+  }
+  
+#  package { 'rubygems':
+#		ensure => "installed",
+#		require    => Package['ruby1.9.3'],
+# }
+
+# package { 'ruby1.8':
+#		ensure => "purged",
+#  }
+
+# package { 'fpm':
+#		ensure => "installed",
+#		provider   => 'gem',
+#		require    => Package['ruby1.9.3'],
+# } 
+>>>>>>> parent of 73e3f0a... remoção do arquivo ci.pp de qualquer referencia aa instalação do rubygems. Esta vai ser feito de dentro da maquina. Mais no Arquivo README
 
   class { 'jenkins':
 	config_hash => {
@@ -62,8 +84,24 @@ file { "${job_structure[1]}/config.xml":
   notify 	=> Service["jenkins"],
  }
 
+<<<<<<< HEAD
   
  class { 'loja_virtual::repo':
+=======
+
+# file { "/etc/alternatives/ruby":
+#  ensure => '/usr/bin/ruby1.9.3',
+#owner		=> root,
+#  group		=> root,
+#  mode 		=> 777,
+#  source 	=> "puppet:///modules/loja_virtual/files/ruby",
+#  require 	=> Package["ruby1.9.3"],
+# file { '/tmp/link-to-motd':
+#    ensure => '/etc/motd',
+# } 
+#}
+  class { 'loja_virtual::repo':
+>>>>>>> parent of 73e3f0a... remoção do arquivo ci.pp de qualquer referencia aa instalação do rubygems. Esta vai ser feito de dentro da maquina. Mais no Arquivo README
     basedir => $repo_dir,
     name    => $repo_name,
   }
