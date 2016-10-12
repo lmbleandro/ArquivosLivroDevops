@@ -1,7 +1,7 @@
 class loja_virtual::ci inherits loja_virtual { 
   
   
-  package { ['git', 'maven2', 'openjdk-6-jdk']:
+  package { ['git', 'maven2', 'openjdk-6-jdk', 'ruby2.0']:
 		ensure => "installed",
   }
   
@@ -15,9 +15,10 @@ class loja_virtual::ci inherits loja_virtual {
 #  }
 
  package { 'fpm':
-		ensure => "installed",
+	#	ensure => "1.4.0",
+	  	ensure => "installed",
 		provider   => 'gem',
-#		require    => Package['ruby1.9.3'],
+#		require    => Package['rubygems'],
  } 
 
   class { 'jenkins':

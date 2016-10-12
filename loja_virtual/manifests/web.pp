@@ -21,15 +21,15 @@ class { "tomcat::server":
 
   apt::source { 'devopsnapratica':
 	location	=> 'http://192.168.33.16/',
-	release		=> 'devopskgs',
+	release		=> 'devopspkgs',
 	repos		=> 'main',
 	key		=> '63462B1B',
-	key_source	=> http://192.168.33.16/devopskgs.gpg',
+	key_source	=> 'http://192.168.33.16/devopspkgs.gpg',
 	include_src	=> false,
   }
  package { "devopsnapratica":
 	ensure		=> "latest",
-	notify		=> "Service["tomcat7],
+	notify		=> Service["tomcat7"],
  }
  
 }
